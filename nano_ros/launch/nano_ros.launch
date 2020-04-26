@@ -1,0 +1,13 @@
+<launch>
+  <!-- <env name="ROS_IP" value="$(optenv ROS_IP 10.0.51.190" /> -->
+  <!-- <machine name="local_alt" address="localhost" default="true" ros-root="/u/user/ros/ros/" ros-package-path="/u/user/ros/ros-pkg" /> -->
+  <param name="robot_description" textfile="$(find nano_ros)/config/urdf/model.sdf" />
+  <!-- Sensor node -->
+  <!-- <include file="$(find ps4_ros)/launch/ps4.launch" /> -->
+  <include file="$(find mavros)/launch/px4.launch" />
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch" />
+  <!-- Manual Control node -->
+  <node name="joy_to_usb" pkg="sabrehawk_usb" output="screen" type="joy_to_usb.py" >
+    <!-- <rosparam file="$(find sabrehawk_usb)/config/sabrehawk_usb_params.yaml" command="load"/> -->
+  </node>
+</launch>

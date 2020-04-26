@@ -14,7 +14,7 @@ class sabreControl:
         rospy.init_node('sabertooth_controller')
         rospy.loginfo("sabertooth controller node: initializing")
         self.ser = serial.Serial(
-            port='/dev/ttyACM0',
+            port='/dev/ttyACM1',
             baudrate=115200,
             parity=serial.PARITY_ODD,
             stopbits=serial.STOPBITS_ONE,
