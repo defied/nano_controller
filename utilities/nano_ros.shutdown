@@ -1,0 +1,6 @@
+#!/bin/bash
+
+PC_PID=$(cat /var/lock/nano_ros.lock)
+kill -9 $PC_PID
+# rm /var/lock/nano_ros.lock
+exit 0

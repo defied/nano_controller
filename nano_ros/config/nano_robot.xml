@@ -1,23 +1,38 @@
 <robot name="nano_robot">
   <link name="base_link" />
-  <link name="link2" />
-  <link name="link3" />
-  <link name="link4" />
+  <link name="camera_link" />
+  <link name="px4_link" />
+  <link name="gps_link" />
+  <link name="left_motor_link" />
+  <link name="right_motor_link" />
 
   <joint name="joint1" type="continuous">
     <parent link="base_link"/>
-    <child link="link2"/>
+    <child link="camera_link"/>
     <origin xyz="5 3 0" rpy="0 0 0" />
   </joint>
 
   <joint name="joint2" type="continuous">
     <parent link="base_link"/>
-    <child link="link3"/>
+    <child link="px4_link"/>
     <origin xyz="-2 5 0" rpy="0 0 1.57" />
   </joint>
 
   <joint name="joint3" type="continuous">
-    <parent link="link3"/>
+    <parent link="px4_link"/>
     <child link="link4"/>
   </joint>
+
+  <joint name="joint4" type="revolute">
+    <parent link="base_link"/>
+    <child link="left_motor_link"/>
+    <origin xyz="5 3 0" rpy="0 0 0" />
+  </joint>
+
+<joint name="joint5" type="revolute">
+    <parent link="base_link"/>
+    <child link="right_motor_link"/>
+    <origin xyz="5 3 0" rpy="0 0 0" />
+  </joint>
+
 </robot>
