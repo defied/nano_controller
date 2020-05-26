@@ -5,7 +5,7 @@ Use /joy commands to manually operate sabertooth 2x32 motors over usb.
 
 import rospy
 import serial
-
+import time
 from sensor_msgs.msg import Joy
 
 
@@ -28,6 +28,9 @@ class sabreControl:
         self.m2_message_last = 'M2:0'
         self.axes_left_stick = 0
         self.axes_right_stick = 0
+
+        self.timer_1    =   time.time()
+        self.timer_2    =   time.time()
 
         rospy.Subscriber('/joy', Joy, self.joy_to_serial_callback, queue_size = 1)
          
@@ -59,7 +62,8 @@ class sabreControl:
         self.m1_message_last = self.m1_message
         self.m2_message_last = self.m2_message
 
-
+    def timeout(self):
+        if self.time_1 > self.time_2:
     
     def run(self):
         rospy.loginfo('sabertooth controllers reading')
