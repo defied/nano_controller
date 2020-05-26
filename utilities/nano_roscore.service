@@ -1,0 +1,15 @@
+[Unit]
+Description=ROS Nano Control Service
+
+[Service]
+Environment="ROS_IP=10.0.51.190"
+
+ExecStart=/bin/bash -c "/home/defied/workspace/utilities/nano_ros.startup"
+
+ExecReload=/bin/bash -c "/home/defied/workspace/utilities/nano_ros.shutdown;/home/defied/workspace/utilities/nano_ros.startup"
+
+Restart=always
+ExecStop=/bin/bash -c "/home/defied/workspace/utilities/nano_ros.shutdown"
+
+[Install]
+WantedBy=multi-user.target

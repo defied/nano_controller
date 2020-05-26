@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source /opt/ros/melodic/setup.bash
+source /home/defied/workspace/devel/setup.bash
+roslaunch nano_ros nano_ros.launch
+PC_PID=$(ps -ax | grep -e 'nano_ros.launch'| grep -v 'grep' | cut -f 2 -d ' ')
+echo $PC_PID > /var/lock/nano_ros.lock
